@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-import cinfo from "../Models/Info.js";
+import cinfo from "../models/Info.js";
 
 
 
