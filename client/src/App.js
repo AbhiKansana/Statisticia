@@ -3,15 +3,16 @@ import "./App.css";
 import MainRoutes from "./Pages/MainRoutes";
 import axios from "axios";
 import { useEffect } from "react";
+import { API_BASE_URL } from "./Keys";
 
 
 
 function App() {
 
   useEffect(()=> {
-    axios.get('http://localhost:3000/stats')
+    axios.get(API_BASE_URL)
     .then(res=> {
-      console.log(res.data)
+      // console.log(res.data)
     })
   },[])
 

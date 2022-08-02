@@ -1,5 +1,7 @@
 import * as types from './actionTypes'
 import axios from 'axios'
+import { API_BASE_URL } from '../Keys'
+
 
 
 function getCountriesRequest(){
@@ -24,7 +26,7 @@ function getCountriesFailure(){
  export function mainGetCountriesData(){
     return (dispatch) =>{
         dispatch(getCountriesRequest())
-        axios.get('http://localhost:3000/stats')
+        axios.get(API_BASE_URL)
         .then(res=>{
             // console.log(res.data)
             dispatch(getCountriesSuccess(res.data))
@@ -38,7 +40,7 @@ function getCountriesFailure(){
 
 export function deleteCountryData(id){
     return (dispatch) => {
-        axios.delete(`http://localhost:3000/stats/${id}`)
+        axios.delete(`${API_BASE_URL}${id}`)
         .then(res=>{
             dispatch(mainGetCountriesData())
         })

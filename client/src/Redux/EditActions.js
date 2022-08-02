@@ -1,5 +1,7 @@
 import * as types from './actionTypes'
 import axios from 'axios'
+import { API_BASE_URL } from '../Keys'
+import {mainGetCountriesData} from './actions'
 
 
 function getEditRequest(){
@@ -24,10 +26,10 @@ function getEditFailure(){
  export function mainUpdateCountries(id,obj){
     return (dispatch) =>{
         dispatch(getEditRequest())
-        console.log(id,obj)
-        axios.patch(`http://localhost:3000/stats/${id}`,obj)
+        console.log(obj)
+        axios.patch(`${API_BASE_URL}${id}`,obj)
         .then(res=>{
-            dispatch(getEditSuccess())
+            dispatch(mainGetCountriesData())
             console.log("resEdit",res)
         })
         .catch(err=>{

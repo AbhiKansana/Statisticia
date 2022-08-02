@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { mainUpdateCountries } from "../Redux/EditActions";
 import { useDispatch, useSelector } from "react-redux";
+import { API_BASE_URL } from "../Keys";
 
 
 export const Editpage = () => {
@@ -22,14 +23,17 @@ export const Editpage = () => {
 
   function handleUpdate(){
      const obj = {city,country,population}
+     console.log(obj)
      dispatch(mainUpdateCountries(id,obj))
      navigate('/')
   }
 
+
+
   useEffect(()=>{
-    axios.get(`http://localhost:3000/stats/${id}`)
+    axios.get(`${API_BASE_URL}${id}`)
     .then(res=>{
-      // console.log(res.data)
+      console.log(res.data)
       setCity(res.data.city)
       setPopulation(res.data.population)
       setCountry(res.data.country)

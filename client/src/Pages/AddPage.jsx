@@ -5,6 +5,7 @@ import axios from "axios";
 import { uesNavigate, useNavigate} from 'react-router-dom'
 import { mainGetCountriesData } from "../Redux/actions";
 import { useDispatch } from "react-redux";
+import { API_BASE_URL } from "../Keys";
 
 
 
@@ -21,13 +22,13 @@ const AddPage = () => {
         const city = capital
         const obj = {country,city,population}
         // console.log(obj)
-        axios.post("http://localhost:3000/stats",obj)
+        axios.post(API_BASE_URL,obj)
         .then((res)=>{
                dispatch(mainGetCountriesData())
                nav('/')
                
         })
-        .catch(err=>console.log(err))
+        .catch(err=>console.log("post error",err))
     }
 
   return (
